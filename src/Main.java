@@ -1,24 +1,25 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
+import java.util.List;
 public class Main {
     public static void main(String[] args) {
-        try {
-            File file = new File("resources/inventory.csv");
-            Scanner fileScanner = new Scanner(file);
-            //Saltar el encabezado del CSV
-            fileScanner.nextLine();
-            while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                String[] productInfo = line.split(",");
-                System.out.println(productInfo[0]);
-                System.out.println(line);
-                //TODO implement the logic to transform this code so it can convert the information in each line into a Product objet
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        productService productServic = new productService();
+
+        // Cargar productos desde un archivo CSV
+        productServic.cargarProductosDesdeCSV("C:\\Users\\Mauricio\\IdeaProjects\\csv-reader-java\\resources\\inventory.csv");
+
+        // Obtener la lista de productos
+        List<Product> productos = productServic.obtenerProductos();
+        productServic.anadirproducto();
+
+        // Imprimir la lista de productos
+        for (Product producto : productos) {
+            System.out.println("Name: " + producto.getName());
+            System.out.println("Description: " + producto.getDescription());
+            System.out.println("Category: " + producto.getCategory());
+            System.out.println("Label: " + producto.getLabel());
+            System.out.println("Price: " + producto.getPrice());
+            System.out.println("URL: " + producto.getUrl());
+            System.out.println();
+       }
 
     }
 }
