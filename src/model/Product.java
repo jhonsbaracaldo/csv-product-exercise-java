@@ -1,74 +1,64 @@
 package model;
+import Services.IProductservices;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Product {
 
+
     private String name;
-
     private String description;
-
     private String category;
+    private String label;
+    private double price;
+    private String url;
 
-    private String tags;
+    private Integer code;
 
-    private float price;
-
-    private String imageUrl;
-
-
-    public Product(String name, String description, String category, String tags, float price, String imageUrl) {
+    public Product(Integer code, String name, String description, String category, String label, double price, String url) {
+        this.code = code++;
         this.name = name;
         this.description = description;
         this.category = category;
-        this.tags = tags;
+        this.label = label;
         this.price = price;
-        this.imageUrl = imageUrl;
+        this.url = url;
     }
+
+
+// Getters y setters (opcional, dependiendo de tus necesidades)
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public String getLabel() {
+        return label;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public String getUrl() {
+        return url;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Integer getCode() {
+        return code;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    @Override
+    public String toString() {
+        return String.format("%-10s|%-60s | %-25s | %-20s | %-20s | %-10.2f | %s", getCode(), getName(), getDescription(), getCategory(), getLabel(), getPrice(), getUrl());
     }
 }

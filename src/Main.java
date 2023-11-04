@@ -1,25 +1,29 @@
+
+import model.Product;
+
+import Services.productService;
+
 import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         productService productServic = new productService();
-
+        Scanner sc= new Scanner(System.in);
         // Cargar productos desde un archivo CSV
-        productServic.cargarProductosDesdeCSV("C:\\Users\\Mauricio\\IdeaProjects\\csv-reader-java\\resources\\inventory.csv");
+        System.out.println("Seleciona por favor que va realizar \n1.Ver Productos\n2.Añadir\n3.Consultar ");
 
-        // Obtener la lista de productos
-        List<Product> productos = productServic.obtenerProductos();
-        productServic.anadirproducto();
+            int seleccion = 0;
+            while (seleccion!=3) {
+                seleccion = sc.nextInt();
+                switch (seleccion) {
 
-        // Imprimir la lista de productos
-        for (Product producto : productos) {
-            System.out.println("Name: " + producto.getName());
-            System.out.println("Description: " + producto.getDescription());
-            System.out.println("Category: " + producto.getCategory());
-            System.out.println("Label: " + producto.getLabel());
-            System.out.println("Price: " + producto.getPrice());
-            System.out.println("URL: " + producto.getUrl());
-            System.out.println();
-       }
+                    case 1-> productServic.cargarProductosDesdeCSV("C:\\Users\\acer\\IdeaProjects\\CSV\\csv-product-exercise-java\\resources\\inventory.csv");
+                    case 2-> productServic.add();
+                    case 3-> productServic.remove();
+                }
+
+            }
+        }
 
     }
-}
