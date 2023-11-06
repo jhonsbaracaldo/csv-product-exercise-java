@@ -20,7 +20,11 @@ public class productService implements IProductservices {
     private List<Product> productList;
     private int code=1;
 
-     Scanner impresion = new Scanner(System.in);
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    Scanner impresion = new Scanner(System.in);
     public productService() {
         productList = new ArrayList<>();
     }
